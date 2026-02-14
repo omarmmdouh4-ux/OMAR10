@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة خاصة لتقى</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fce4ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 1s ease;
+        }
+
+        .container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 320px;
+            z-index: 10;
+        }
+
+        h2 { color: #d81b60; margin-bottom: 25px; font-size: 20px; }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #f06292;
+            border-radius: 10px;
+            outline: none;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        button {
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        button:hover { background-color: #ad1457; transform: scale(1.02); }
+
+        #messageSection {
+            display: none;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .love-message {
+            font-size: 24px;
+            color: #880e4f;
+            line-height: 1.8;
+            font-weight: bold;
+        }
+
+        .heart {
+            color: #e91e63;
+            font-size: 60px;
+            margin-top: 25px;
+            display: block;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="loginBox">
+        <h2>ادخلي تاريخنا الخاص (اليوم/الشهر)</h2>
+        <input type="password" id="passInput" placeholder="•• / ••">
+        <button onclick="checkPassword()">فتح المفاجأة ✨</button>
+        <p id="error" style="color: #c2185b; display: none; margin-top: 15px; font-weight: bold;">كلمة السر غلط يا تقى! حاولي تاني ❤️</p>
+    </div>
+
+    <div class="container" id="messageSection">
+        <div class="love-message">
+            يا تقى.. <br>
+            وحشتيني وبجد أنا مش عارف أعيش من غيرك وبحبك يا تقى ❤️
+        </div>
+        <span class="heart">❤️</span>
+    </div>
+
+    <audio id="loveSong">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+
+    <script>
+        function checkPassword() {
+            const pass = document.getElementById('passInput').value;
+            const loginBox = document.getElementById('loginBox');
+            const messageSection = document.getElementById('messageSection');
+            const error = document.getElementById('error');
+            const song = document.getElementById('loveSong');
+
+            // الباسورد المطلوب
+            if (pass === "16/12") {
+                loginBox.style.display = "none";
+                messageSection.style.display = "block";
+                document.body.style.backgroundColor = "#f8bbd0"; 
+                
+                // تشغيل الأغنية
+                song.play().catch(function(error) {
+                    console.log("المتصفح منع التشغيل التلقائي، لكن الأغنية جاهزة!");
+                });
+            } else {
+                error.style.display = "block";
+                document.getElementById('passInput').value = "";
+            }
+        }
+    </script>
+
+</body>
+</html>Text and images you copy will automatically show here
